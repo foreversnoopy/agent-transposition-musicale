@@ -1,0 +1,11 @@
+# Azure OpenAI et LangChain
+langchain==0.1.0
+langchain-openai==0.0.2
+openai==1.12.0
+
+# Configuration et environnement
+python-dotenv==1.0.0
+pyyaml==6.0.1
+
+# Utilities
+colorama==0.4.6  # Pour des sorties colorées dans la console

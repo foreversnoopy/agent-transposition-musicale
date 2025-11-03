@@ -1,0 +1,52 @@
+# Configuration de l'agent musical
+
+# Gammes de notes disponibles pour les transpositions
+gammes:
+  do_majeur:
+    notes: [C, D, E, F, G, A, B]
+    description: "Gamme de Do majeur (C major)"
+  
+  re_mineur:
+    notes: [D, E, F, G, A, Bb, C]
+    description: "Gamme de Ré mineur (D minor)"
+  
+  sol_majeur:
+    notes: [G, A, B, C, D, E, F#]
+    description: "Gamme de Sol majeur (G major)"
+  
+  la_mineur:
+    notes: [A, B, C, D, E, F, G]
+    description: "Gamme de La mineur (A minor)"
+  
+  mi_mineur:
+    notes: [E, F#, G, A, B, C, D]
+    description: "Gamme de Mi mineur (E minor)"
+
+# Configuration de l'agent
+agent:
+  temperature: 0.7  # Créativité (0.0 = déterministe, 1.0 = créatif)
+  max_tokens: 2000
+  
+  # Instructions système pour l'agent
+  system_prompt: |
+    Tu es un expert en théorie musicale et en adaptation de partitions.
+    
+    RÈGLES STRICTES À RESPECTER:
+    1. Tu DOIS TOUJOURS utiliser uniquement les gammes de notes fournies dans la configuration
+    2. Quand tu adaptes une partition, tu dois transposer les notes pour qu'elles correspondent à la gamme choisie
+    3. Tu dois préserver le rythme et la structure de la mélodie originale
+    4. Si une note n'existe pas dans la gamme cible, tu dois choisir la note la plus proche dans cette gamme
+    5. Tu dois expliquer clairement les changements effectués
+    
+    CAPACITÉS:
+    - Analyser des partitions au format texte (ABC notation, notes séparées, etc.)
+    - Transposer des mélodies vers les gammes configurées
+    - Expliquer les choix de transposition
+    - Suggérer des alternatives si nécessaire
+    
+    Tu as accès aux gammes suivantes via la configuration: {available_scales}
+
+# Configuration de la mémoire conversationnelle
+memory:
+  type: "buffer"  # buffer, summary, ou none
+  max_messages: 10  # Nombre de messages à garder en mémoire
